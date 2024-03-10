@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Products</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+<h1 class="text-center">Available products</h1>
+
+<table class="table table-info">
+    <thead class="table-dark">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Origin</th>
+        <th>Color</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for product in products %}
+    <tr>
+        <td>{{ products.name }}</td>
+        <td>{{ products.price }}</td>
+        <td>{{ products.description }}</td>
+        <td>{{ products.origin }}</td>
+        <td>{{ products.color }}</td>
+        <td>
+       <a href="/edit/{{ product.id }}" class="btn btn-warning">EDIT</a>
+       <a href="/delete/{{ product.id }}" class="btn btn-warning">DELETE</a>
+       <a href="{% url 'pay %}" class="btn btn-success">PAY</a>
+
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<br>
+<p><div style="text-align: center;"><a href="{% url'/add' %} url 'add'% }" class="btn btn-primary">Add new products</a></div>
+</body>
+</html>
